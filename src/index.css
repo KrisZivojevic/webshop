@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: Inter, 'Times New Roman', Times, serif;
+}
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+em, img, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, details, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
