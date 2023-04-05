@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
-  font-family: Inter, 'Times New Roman', Times, serif;
+  font-family: 'Poppins', sans-serif;
+  color: var(--main-color);
 }
 html, body, div, span, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -18,4 +19,13 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 display: block;
+}
+:root {
+  --main-color: #5D6167;
+  --border-color: #dddddd;
+  --active-color: #fc7978;
+  --white: #ffffff;
+}
+#navigation .active {
+  color: var(--active-color);
 }
