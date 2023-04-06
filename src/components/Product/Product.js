@@ -1,24 +1,25 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-import { getProduct } from '../../api/productsService';
+import React from "react";
+import classes from "./Product.module.css";
+import { Link } from "react-router-dom";
 
-const Product = () => {
-  const { id } = useParams();
-
-  const productHandler = async (id) => {
-    const result = await getProduct(id);
-    console.log(result);
-  }
-
-  useEffect(() => {
-    if (id) {
-      productHandler(id);
-    }
-  }, [id]);
-
+const Product = (props) => {
   return (
-    <div>Product</div>
-  )
-}
+    <div className={classes.product__wrapper} key={props.id}>
+      <Link to={`/products/${props.id}`}>
+        <img
+          src={props.image}
+          alt="product"
+          className={classes.product__image}
+        />
+        <div className={classes.product__description}>
+          <p className={classes.product__category}>{props.category}</p>
+          <h4 className={classes.product__title}>{props.title}</h4>
+          <p className={classes.product__price}>{props.price} $</p>
+          <button className={classes.product__button}>Add to Cart</button>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
-export default Product
+export default Product;

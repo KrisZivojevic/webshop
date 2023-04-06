@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../api/productsService";
 import classes from "./Home.module.css";
+import Product from "../Product/Product";
 
 const Home = () => {
   //  TODO: move this to Products component
@@ -15,19 +16,12 @@ const Home = () => {
   useEffect(() => {
     productsHandler();
   }, []);
+
   return (
-    <div className={classes.products__container}>
+    <div className={`max-width ${classes.products__container}`}>
       {products.map((product) => {
         return (
-          <div className={classes.product__wrapper} key={product.id}>
-            <img src={product.image} alt="product" className={classes.product__image} />
-            <div className={classes.product__description}>
-              <p className={classes.product__category}>{product.category}</p>
-              <h4 className={classes.product__title}>{product.title}</h4>
-              <p className={classes.product__price}>{product.price} $</p>
-              <button className={classes.product__button}>Add to Cart</button>
-            </div>
-          </div>
+          <Product key={product.id} id={product.id} image={product.image} category={product.category} title={product.title} price={product.price} />
         );
       })}
     </div>

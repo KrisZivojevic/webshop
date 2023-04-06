@@ -41,7 +41,7 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.register__form}>
       <div className={classes.register__wrapper}>
         <span className={classes.register__title}>Sign Up</span>
         <input type="username" placeholder="Username" name="username" onChange={(event) => setUsername(event.target.value)} />

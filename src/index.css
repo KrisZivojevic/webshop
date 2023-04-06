@@ -29,3 +29,6 @@ display: block;
 #navigation .active {
   color: var(--active-color);
 }
+.max-width {
+  max-width: 1500px;
+}

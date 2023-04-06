@@ -1,0 +1,36 @@
+.details__container {
+  display: flex;
+  padding: 200px 50px;
+  justify-content: center;
+  gap: 50px;
+  margin: 0 auto;
+}
+.details__specifications {
+  flex-basis: 40%;
+}
+.details__image {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+.details__title {
+  margin: 10px 0 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+.details__description {
+  text-align: justify;
+  padding: 20px 0;
+}
+.details__button {
+  margin-top: 10px;
+  padding: 5px 0;
+  width: 30%;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: .3s;
+}
+.details__button:hover {
+  background-color: var(--active-color);
+  color: var(--white);
+}
