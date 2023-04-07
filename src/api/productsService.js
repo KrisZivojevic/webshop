@@ -7,3 +7,9 @@ export const getProducts = () => {
 export const getProduct = (id) => {
   return apiServiceHandler(`${BASE_URL}/products/${id}`);
 };
+export const getCategories = (id) => {
+  return apiServiceHandler(`${BASE_URL}/products/categories`);
+};
+export const getProductsByCategory = (category) => {
+  return apiServiceHandler(`${BASE_URL}/products/category/${category}`);
+};

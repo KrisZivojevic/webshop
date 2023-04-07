@@ -9,7 +9,6 @@ const ProductDetails = () => {
 
   const productHandler = async (id) => {
     const result = await getProduct(id);
-    console.log(result);
     setProduct(result);
   }
 

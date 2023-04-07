@@ -1,8 +1,25 @@
 .products__container {
-  padding: 130px 50px;
+  padding: 100px 50px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+}
+.categories__list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+}
+.categories__item {
+  list-style-type: none;
+  cursor: pointer;
+  transition: .3s;
+  border-bottom: 1px solid var(--white);
+  padding: 10px 30px;
+}
+.categories__item:hover {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--active-color);
 }
