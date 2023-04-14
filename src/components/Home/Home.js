@@ -3,7 +3,7 @@ import { getCategories, getProducts, getProductsByCategory } from "../../api/pro
 import classes from "./Home.module.css";
 import Product from "../Product/Product";
 
-const Home = () => {
+const Home = (props) => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -37,7 +37,7 @@ const Home = () => {
       })}</ul>
       {products.map((product) => {
         return (
-          <Product key={product.id} id={product.id} image={product.image} category={product.category} title={product.title} price={product.price} />
+          <Product key={product.id} id={product.id} image={product.image} category={product.category} title={product.title} price={product.price} addToCart={props.addToCart} />
         );
       })}
     </div>

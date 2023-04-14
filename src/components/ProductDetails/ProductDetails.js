@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/productsService';
 import classes from './ProductDetails.module.css'
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
 
@@ -30,7 +30,7 @@ const ProductDetails = () => {
           <h2 className={classes.details__title}>{product?.title}</h2>
           <p className={classes.details__price}>{product?.price} $</p>
           <p className={classes.details__description}>{product?.description}</p>
-          <button className={classes.details__button}>Add to Cart</button>
+          <button className={classes.details__button} onClick={() => props.addToCart(id)}>Add to Cart</button>
         </div>
     </div>
   )
