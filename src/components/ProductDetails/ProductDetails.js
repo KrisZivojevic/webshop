@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/productsService';
 import classes from './ProductDetails.module.css'
+import { CartContext } from '../../context/CartContext';
 
-const ProductDetails = (props) => {
+const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+
+  const { addToCart } = useContext(CartContext);
 
   const productHandler = async (id) => {
     const result = await getProduct(id);
@@ -30,7 +33,7 @@ const ProductDetails = (props) => {
           <h2 className={classes.details__title}>{product?.title}</h2>
           <p className={classes.details__price}>{product?.price} $</p>
           <p className={classes.details__description}>{product?.description}</p>
-          <button className={classes.details__button} onClick={() => props.addToCart(id)}>Add to Cart</button>
+          <button className={classes.details__button} onClick={() => addToCart(id)}>Add to Cart</button>
         </div>
     </div>
   )

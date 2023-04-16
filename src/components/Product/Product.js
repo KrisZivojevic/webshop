@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Product.module.css";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const Product = (props) => {
+  const { addToCart } = useContext(CartContext);
   return (
     <div className={classes.product__wrapper} key={props.id}>
       <Link to={`/products/${props.id}`}>
@@ -19,7 +21,7 @@ const Product = (props) => {
       </Link>
       <button
         className={classes.product__button}
-        onClick={() => props.addToCart(props.id)}
+        onClick={() => addToCart(props.id)}
       >
         Add to Cart
       </button>
