@@ -7,10 +7,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ isError: false, message: "" });
   const navigate = useNavigate();
- 
-
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,15 +46,32 @@ const Login = () => {
       <div className={classes.login__wrapper}>
         <span className={classes.login__title}>Login</span>
         {/* <input type="email" placeholder="Email Address" name="email" /> */}
-        <input type="email" placeholder="Email Address" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-        <input type="password" placeholder="Password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+        <input
+          type="email"
+          placeholder="Email Address"
+          name="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
         {error.isError && (
           <p className={classes.login__error}>{error.message}</p>
         )}
         <p className={classes.login__redirection}>
           Don't have an account? Sign up <NavLink to="/register">here</NavLink>.
         </p>
-        <button disabled={email.length === 0 || password.length === 0} className={classes.login__button}>Log in</button>
+        <button
+          disabled={email.length === 0 || password.length === 0}
+          className={classes.login__button}
+        >
+          Log in
+        </button>
       </div>
     </form>
   );
