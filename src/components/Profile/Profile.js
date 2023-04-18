@@ -1,25 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Profile = () => {
-  const navigate = useNavigate();
-  let items = localStorage.getItem("register");
-  const allUsers = JSON.parse(items);
-  const jsonUser = localStorage.getItem("user");
-  const loggedInUser = JSON.parse(jsonUser);
-  let existingUser = null;
+  const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (!jsonUser) {
-      navigate("/login", { replace: true });
-    } else {
-      existingUser = allUsers.find((registeredUser) => registeredUser.email === loggedInUser.email);
-    }
-
-  }, [])
-
-
-  return <h2>Welcome to your profile, {existingUser?.username}</h2>;
+  return (
+    <h2 style={{ paddingTop: "100px" }}>
+      Welcome to your profile, {user.username}
+    </h2>
+  );
 };
 
 export default Profile;
