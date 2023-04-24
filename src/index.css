@@ -25,6 +25,7 @@ display: block;
   --border-color: #dddddd;
   --active-color: #fc7978;
   --white: #ffffff;
+  --grey: #dfdfdf;
 }
 #navigation .active {
   color: var(--active-color);
