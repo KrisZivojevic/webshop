@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import classes from "./Cart.module.css";
+import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart, deleteProduct, resetCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div className={classes.cart__wrapper}>
@@ -36,11 +39,21 @@ const Cart = () => {
                 </button>
               </div>
             </div>
-            // <Product key={product.id} id={product.id} image={product.image} category={product.category} title={product.title} price={product.price} />
           );
         })}
       </div>
-      <button className={classes.cart__reset} onClick={resetCart}>Reset Cart</button>
+      <button className={classes.cart__reset} onClick={resetCart}>
+        Reset Cart
+      </button>
+      <div className={classes.total__wrapper}>
+        <h4>Cart Total</h4>
+        <div className={classes.total__container}>
+          <p>Total</p>
+          <p>$ 50</p>
+        </div>
+        <button disabled={!user} className={classes.total__button}>Proceed to checkout</button>
+        {!user && <p>Please <Link to="/login">log in</Link> to check out.</p>}
+      </div>
     </div>
   );
 };

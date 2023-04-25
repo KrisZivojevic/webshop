@@ -11,14 +11,11 @@ export const AuthProvider = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!jsonUser) {
-      navigate("/login", { replace: true });
-    } else {
-      setUser(
-        allUsers?.find(
-          (registeredUser) => registeredUser.email === loggedInUser.email
-        )
+    if (jsonUser) {
+      const x = allUsers?.find(
+        (registeredUser) => registeredUser.email === loggedInUser.email
       );
+      setUser(x);
     }
   }, [navigate]);
 

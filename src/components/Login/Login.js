@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/helpers";
 import classes from "./Login.module.css";
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
       let items = localStorage.getItem("register");
       const prevRegistered = JSON.parse(items);
 
-      const existingUser = prevRegistered.find(
+      const existingUser = prevRegistered?.find(
         (user) => user.email === loginValues.email
       );
       if (existingUser) {
@@ -64,7 +64,7 @@ const Login = () => {
           <p className={classes.login__error}>{error.message}</p>
         )}
         <p className={classes.login__redirection}>
-          Don't have an account? Sign up <NavLink to="/register">here</NavLink>.
+          Don't have an account? Sign up <Link to="/register">here</Link>.
         </p>
         <button
           disabled={email.length === 0 || password.length === 0}

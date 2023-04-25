@@ -28,6 +28,12 @@ const Home = () => {
   useEffect(() => {
     productsHandler();
     categoriesHandler();
+
+    let items = localStorage.getItem("register");
+
+    if (!items) {
+      localStorage.setItem("register", JSON.stringify([]));
+    }
   }, []);
 
   return (

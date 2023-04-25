@@ -70,7 +70,37 @@
   transition: 0.3s;
   margin-top: 20px;
 }
-.cart__reset:hover, .cart__button:hover {
+.total__wrapper {
+  border: 1px solid var(--border-color);
+  max-width: 500px;
+  margin: 50px auto;
+}
+.total__wrapper h4 {
+  font-weight: 600;
+  background-color: var(--grey);
+  padding: 10px;
+}
+.total__container {
+  padding: 40px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--border-color);
+}
+.total__button {
+  display: block;
+  margin: 20px auto;
+  padding: 5px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: 0.3s;
+}
+.cart__reset:hover, .cart__button:hover, .total__button:hover {
   background-color: var(--active-color);
   color: var(--white);
+}
+.total__button:disabled {
+  background-color: var(--main-color);
+  color: var(--white);
+  cursor: not-allowed;
 }

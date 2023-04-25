@@ -7,6 +7,7 @@ import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
+import { AuthProvider } from "./context/AuthProvider";
 
 const App = () => {
   return (
@@ -18,8 +19,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<AuthProvider><Profile /></AuthProvider>} />
+        <Route path="/cart" element={<AuthProvider><Cart /></AuthProvider>} />
       </Routes>
     </div>
   );
