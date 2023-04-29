@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import classes from "./Navigation.module.css";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import Dropdown from "../Dropdown/Dropdown";
 
 const Navigation = () => {
   return (
@@ -11,23 +14,14 @@ const Navigation = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact">Contact</NavLink>
-        </li>
-        <li>
           <NavLink to="/cart" className={classes.icon}>
             Cart <AiOutlineShoppingCart size="20px" />
           </NavLink>
         </li>
         <li className={`${classes.dropdown} ${classes.icon}`}>
-            My Account <BsFillPersonFill size="20px" />
+          My Account <BsFillPersonFill size="20px" />
           <div className={classes.dropdown__content}>
-            <ul>
-              <li><NavLink to="/register">Sign Up</NavLink></li>
-              <li><NavLink to="/login">Log In</NavLink></li>
-            </ul>
+            <Dropdown />
           </div>
         </li>
       </ul>

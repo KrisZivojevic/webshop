@@ -5,22 +5,27 @@ import { useNavigate } from "react-router-dom";
 export const AuthProvider = (props) => {
   const [user, setUser] = useState("");
   let items = localStorage.getItem("register");
-  const allUsers = JSON.parse(items);
+  const storageUsers = JSON.parse(items);
   const jsonUser = localStorage.getItem("user");
-  const loggedInUser = JSON.parse(jsonUser);
+  const storageUser = JSON.parse(jsonUser);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (jsonUser) {
-      const x = allUsers?.find(
-        (registeredUser) => registeredUser.email === loggedInUser.email
+      const loggedInUser = storageUsers?.find(
+        (registeredUser) => registeredUser.email === storageUser.email
       );
-      setUser(x);
+      setUser(loggedInUser);
     }
   }, [navigate]);
 
+  const logout = () => {
+    localStorage.removeItem("user")
+    setUser("");
+  }
+
   return (
-    <AuthContext.Provider value={{ user }}>
+    <AuthContext.Provider value={{ user, logout }}>
       {props.children}
     </AuthContext.Provider>
   );

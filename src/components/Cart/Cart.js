@@ -5,8 +5,12 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, deleteProduct, resetCart } = useContext(CartContext);
+  const { cart, deleteProduct, resetCart, getTotalPrice } = useContext(CartContext);
   const { user } = useContext(AuthContext);
+
+  if (cart.length === 0) {
+    return <p className={classes.cart__wrapper}>Your cart is empty.</p>
+  }
 
   return (
     <div className={classes.cart__wrapper}>
@@ -49,7 +53,7 @@ const Cart = () => {
         <h4>Cart Total</h4>
         <div className={classes.total__container}>
           <p>Total</p>
-          <p>$ 50</p>
+          <p>$ {getTotalPrice()}</p>
         </div>
         <button disabled={!user} className={classes.total__button}>Proceed to checkout</button>
         {!user && <p>Please <Link to="/login">log in</Link> to check out.</p>}

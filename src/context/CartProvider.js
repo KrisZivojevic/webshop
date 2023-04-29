@@ -37,8 +37,17 @@ export const CartProvider = (props) => {
       setCart((prevCart) => [...prevCart, cartItemWithQuantity]);
     }
   };
+
+  const getTotalPrice = () => {
+    let total = 0;
+    cart.forEach((product) => (total += product.quantity * product.price));
+    return total.toFixed(2);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, deleteProduct, resetCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, deleteProduct, resetCart, getTotalPrice }}
+    >
       {props.children}
     </CartContext.Provider>
   );
