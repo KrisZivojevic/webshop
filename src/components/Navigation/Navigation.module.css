@@ -57,3 +57,11 @@
 .nav__list a:hover {
   color: var(--active-color);
 }
+@media screen and (max-width: 1040px) {
+  .nav__list {
+    gap: 20px;
+  }
+  .dropdown__content {
+    left: -14px;
+  }
+}

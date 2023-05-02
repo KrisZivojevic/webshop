@@ -9,7 +9,7 @@ const Cart = () => {
   const { user } = useContext(AuthContext);
 
   if (cart.length === 0) {
-    return <p className={classes.cart__wrapper}>Your cart is empty.</p>
+    return <p className={classes.cart__empty}>Your shopping cart is empty.</p>
   }
 
   return (
@@ -31,7 +31,7 @@ const Cart = () => {
                 alt="product"
                 className={classes.cart__image}
               />
-              <p>{product.title}</p>
+              <p className={classes.cart__product_title}>{product.title}</p>
               <p>$ {product.price}</p>
               <p>{product.quantity}</p>
               <div className={classes.cart__button_wrapper}>
@@ -56,7 +56,7 @@ const Cart = () => {
           <p>$ {getTotalPrice()}</p>
         </div>
         <button disabled={!user} className={classes.total__button}>Proceed to checkout</button>
-        {!user && <p>Please <Link to="/login">log in</Link> to check out.</p>}
+        {!user && <p className={classes.total__info}>Please <Link to="/login">log in</Link> to proceed.</p>}
       </div>
     </div>
   );

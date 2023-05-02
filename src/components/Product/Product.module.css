@@ -43,3 +43,8 @@
   background-color: var(--active-color);
   color: var(--white);
 }
+@media screen and (max-width: 600px) {
+  .product__wrapper {
+    width: 250px;
+  }
+}

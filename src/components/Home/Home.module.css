@@ -9,6 +9,7 @@
 .categories__list {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   padding: 10px 0;
 }
@@ -22,4 +23,10 @@
 .categories__item:hover {
   border-bottom: 1px solid var(--border-color);
   color: var(--active-color);
+}
+
+@media screen and (max-width: 1040px) {
+  .categories__item {
+    padding: 10px;
+  }
 }

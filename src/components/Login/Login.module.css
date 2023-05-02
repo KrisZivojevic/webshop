@@ -45,3 +45,11 @@
   color: var(--white);
   cursor: not-allowed;
 }
+@media screen and (max-width: 600px) {
+  .login__form {
+    padding-top: 80px;
+  }
+  .login__wrapper input {
+    min-width: 250px;
+  }
+} 
