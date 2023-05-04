@@ -1,11 +1,16 @@
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link,  useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/helpers";
 import classes from "./Login.module.css";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { AuthContext } from "../../context/AuthContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ isError: false, message: "" });
+  const [register, setRegister] = useLocalStorage("register", []);
+  const [user, setUser] = useLocalStorage("user", null);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -15,20 +20,13 @@ const Login = () => {
     const loginValues = Object.fromEntries(data.entries());
 
     if (validate(loginValues)) {
-      let items = localStorage.getItem("register");
-      const prevRegistered = JSON.parse(items);
-
-      const existingUser = prevRegistered.find(
+      const existingUser = register.find(
         (user) => user.email === loginValues.email
       );
       if (existingUser) {
         if (loginValues.password === existingUser.password) {
-          localStorage.setItem(
-            "user",
-            JSON.stringify({ email: loginValues.email })
-          );
           setError({ isError: false, message: "" });
-          navigate("/profile", { replace: true });
+          login(existingUser)
         } else {
           setError({
             isError: true,
@@ -45,7 +43,6 @@ const Login = () => {
     <form onSubmit={handleSubmit} className={classes.login__form}>
       <div className={classes.login__wrapper}>
         <span className={classes.login__title}>Login</span>
-        {/* <input type="email" placeholder="Email Address" name="email" /> */}
         <input
           type="email"
           placeholder="Email Address"

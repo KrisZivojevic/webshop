@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { validate } from "../../helpers/helpers";
 import classes from "./Register.module.css";
+import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
+  const [register, setRegister] = useLocalStorage("register", []);
+  const [user, setUser] = useLocalStorage("user", null);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,16 +20,7 @@ const Register = () => {
     const values = Object.fromEntries(data.entries());
 
     if (validate(values)) {
-      let items = localStorage.getItem("register");
-
-      if (items === null) {
-        localStorage.setItem("register", JSON.stringify([]));
-      }
-
-      items = localStorage.getItem("register");
-      const prevRegistered = JSON.parse(items);
-
-      const isRegistered = prevRegistered.find(
+      const isRegistered = register.find(
         (user) => user.email === values.email
       );
 
@@ -32,10 +28,9 @@ const Register = () => {
         setIsError(true);
       } else {
         setIsError(false);
-        localStorage.setItem(
-          "register",
-          JSON.stringify([...prevRegistered, values])
-        );
+        setRegister([...register, values]);
+        setUser({ username: values.username, email: values.email });
+        navigate("/profile", { replace: true });
       }
     }
   };

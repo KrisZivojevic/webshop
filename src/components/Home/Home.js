@@ -28,6 +28,15 @@ const Home = () => {
   useEffect(() => {
     productsHandler();
     categoriesHandler();
+<<<<<<< Updated upstream
+=======
+
+    // let items = localStorage.getItem("register");
+
+    // if (!items) {
+    //   localStorage.setItem("register", JSON.stringify([]));
+    // }
+>>>>>>> Stashed changes
   }, []);
 
   return (
