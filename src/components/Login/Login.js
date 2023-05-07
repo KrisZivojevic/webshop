@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { Link,  useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { validate } from "../../helpers/helpers";
 import classes from "./Login.module.css";
+import { AuthContext } from "../../context/AuthContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ isError: false, message: "" });
-  const navigate = useNavigate();
+  const { login, isUserRegistered } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,20 +16,13 @@ const Login = () => {
     const loginValues = Object.fromEntries(data.entries());
 
     if (validate(loginValues)) {
-      let items = localStorage.getItem("register");
-      const prevRegistered = JSON.parse(items);
+      const userToBeLoggedIn = isUserRegistered(email);
 
-      const existingUser = prevRegistered?.find(
-        (user) => user.email === loginValues.email
-      );
-      if (existingUser) {
-        if (loginValues.password === existingUser.password) {
-          localStorage.setItem(
-            "user",
-            JSON.stringify({ email: loginValues.email })
-          );
+      // explicitly convert to boolean - does not work without it
+      if (!!userToBeLoggedIn) {
+        if (loginValues.password === userToBeLoggedIn.password) {
           setError({ isError: false, message: "" });
-          navigate("/profile", { replace: true });
+          login(userToBeLoggedIn);
         } else {
           setError({
             isError: true,
@@ -45,7 +39,6 @@ const Login = () => {
     <form onSubmit={handleSubmit} className={classes.login__form}>
       <div className={classes.login__wrapper}>
         <span className={classes.login__title}>Login</span>
-        {/* <input type="email" placeholder="Email Address" name="email" /> */}
         <input
           type="email"
           placeholder="Email Address"
@@ -64,7 +57,7 @@ const Login = () => {
           <p className={classes.login__error}>{error.message}</p>
         )}
         <p className={classes.login__redirection}>
-          Don't have an account? Sign up <Link to="/register">here</Link>.
+          Don't have an account? Sign up <NavLink to="/register">here</NavLink>.
         </p>
         <button
           disabled={email.length === 0 || password.length === 0}

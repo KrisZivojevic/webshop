@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import classes from "./Navigation.module.css";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../../context/AuthContext";
 import Dropdown from "../Dropdown/Dropdown";
 
 const Navigation = () => {

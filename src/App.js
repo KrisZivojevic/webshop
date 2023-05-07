@@ -6,19 +6,26 @@ import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
-import { AuthProvider } from "./context/AuthProvider";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   return (
     <div>
-      <AuthProvider><Navigation /></AuthProvider>
+        <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/profile" element={<AuthProvider><Profile /></AuthProvider>} />
-        <Route path="/cart" element={<AuthProvider><Cart /></AuthProvider>} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
