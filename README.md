@@ -1,6 +1,7 @@
 ## Webshop Details
 
 A React webshop app is a platform built to browse products and add items to a cart. Users can create an account, navigate through the different product categories, view product details, and add items to their shopping cart.
+The purpose of the project is to demonstrate the use of features such as Protected Route, CRUD API communication and global state management with Context.
 
 ## Technical Details
 
