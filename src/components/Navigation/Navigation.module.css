@@ -25,8 +25,8 @@
 .nav__list a {
   color: var(--main-color);
   text-decoration: none;
-  line-height: 80px;
   transition: color 0.3s;
+  display: flex;
 }
 .icon {
   display: flex;
@@ -48,7 +48,8 @@
 }
 .dropdown__content a {
   padding: 0 25px;
-  line-height: unset;
+  /* line-height: unset; */
+  height: 100%;
 }
 .dropdown:hover .dropdown__content {
   display: block;

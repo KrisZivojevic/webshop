@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  color: var(--main-color);
 }
 html, body, div, span, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -13,6 +12,7 @@ article, aside, details,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, section, summary,
 time, mark, audio, video {
+  color: var(--main-color);
   margin: 0;
   padding: 0;
 }
@@ -26,6 +26,12 @@ display: block;
   --active-color: #fc7978;
   --white: #ffffff;
   --grey: #dfdfdf;
+
+  --footer-height: 100px;
+  --nav-height: 81px;
+}
+main {
+  min-height: calc(100vh - (var(--footer-height) + var(--nav-height)));
 }
 #navigation .active {
   color: var(--active-color);
