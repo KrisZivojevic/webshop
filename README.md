@@ -9,6 +9,7 @@ A React webshop app is a platform built to browse products and add items to a ca
 - Icons were made using the react-icons library.
 - Hooks used: useState, useContext, useEffect, custom hook
 - React Router was used for routing
+- Data is fetched from Fake Store API https://fakestoreapi.com/
 - Favicon was downloaded from [https://icons8.com/icons/set/webshop](https://icons8.com/icons/set/webshop)
 
 ## Dependencies
