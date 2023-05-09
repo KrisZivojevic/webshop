@@ -7,7 +7,7 @@ import Register from "./components/Register/Register";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import Footer from "./Footer/Footer";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (

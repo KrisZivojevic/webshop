@@ -34,3 +34,23 @@
   background-color: var(--active-color);
   color: var(--white);
 }
+@media screen and (max-width: 800px) {
+  .details__container {
+    flex-direction: column;
+    align-items: center;
+    padding: 130px 30px;
+    gap: 25px;
+  }
+  .details__image {
+    height: 200px;
+  }
+  .details__title {
+    font-size: 18px;
+  }
+  .details__description {
+    font-size: 14px;
+  }
+  .details__button {
+    width: 150px;
+  }
+}
